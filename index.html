@@ -24,28 +24,26 @@
     <div class="sidenav" id="mySidenav">
       <button class="closebtn" onclick="closeNav()">&times;</button>
       <div class="side-nav-list" id="menu-list">
-        <button>Sport</button>
-        <button>Tech</button>
-        <button>World</button>
-        <button>Finance</button>
-        <button>Politics</button>
+        <button>General</button>
         <button>Business</button>
-        <button>Economics</button>
-        <button>Entertainment</button>
-        <button>Beauty</button>
-        <button>Travel</button>
-        <button>Music</button>
-        <button>Food</button>
+        <button>Technology</button>
         <button>Science</button>
-        <button>Gaming</button>
-        <button>Energy</button>
+        <button>Health</button>
+        <button>Sports</button>
+        <button>Entertainment</button>
       </div>
     </div>
     <i class="fa-solid fa-bars d-block d-sm-none" onclick="openNav()"></i>
     <section class="container">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" placeholder="search" />
-      <button>Go</button>
+      <i
+        class="fa-solid fa-magnifying-glass"
+        id="search-glass"
+        onclick="openSearchBox()"
+      ></i>
+      <span id="input-area">
+        <input type="text" placeholder="search" />
+        <button>Go</button></span
+      >
       <!--website name, menu-->
       <section>
         <!--name-->
@@ -59,25 +57,17 @@
 
         <!--menu bar-->
         <div class="nav-bar d-none d-sm-block">
-          <button>Sport</button>
-          <button>Tech</button>
-          <button>World</button>
-          <button>Finance</button>
-          <button>Politics</button>
+          <button>General</button>
           <button>Business</button>
-          <button>Economics</button>
-          <button>Entertainment</button>
-          <button>Beauty</button>
-          <button>Travel</button>
-          <button>Music</button>
-          <button>Food</button>
+          <button>Technology</button>
           <button>Science</button>
-          <button>Gaming</button>
-          <button>Energy</button>
+          <button>Health</button>
+          <button>Sports</button>
+          <button>Entertainment</button>
         </div>
       </section>
       <!--articles section-->
-      <section>
+      <section id="news-board">
         <div class="row news">
           <!--texts-->
           <div class="col-lg-8">
@@ -104,5 +94,6 @@
     ></script>
     <script src="main.js"></script>
     <!-- 햄버거 버튼 추가  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js"></script>
   </body>
 </html>
