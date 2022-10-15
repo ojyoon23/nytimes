@@ -4,11 +4,9 @@ navbarMenus.forEach((menu) =>
   menu.addEventListener("click", (event) => getNewsByTopic(event))
 );
 
-const getLatestNews = async () => {
-  let url = new URL(
-    //`https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=business`
-    `https://newsapi.org/v2/top-headlines?country=us&apiKey=9f59e5d808ff4e5bb49c8ee92f191b8d`
-  );
+let searchButton = document.getElementById("search-button");
+let url;
+const getURL = async () => {
   let header = new Headers({
     //"x-api-key": "5ajRmfTRgAmgtKgdW9YLBXW7JhXbhtalP4nPdlGt7OM",
     "x-api-key": "9f59e5d808ff4e5bb49c8ee92f191b8d",
@@ -17,8 +15,15 @@ const getLatestNews = async () => {
   let response = await fetch(url, { headers: header });
   let data = await response.json();
   news = data.articles;
-  console.log(news);
   render();
+};
+
+const getLatestNews = async () => {
+  url = new URL(
+    //`https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=business`
+    `https://newsapi.org/v2/top-headlines?country=us&apiKey=9f59e5d808ff4e5bb49c8ee92f191b8d`
+  );
+  getURL();
 };
 
 getLatestNews();
@@ -42,19 +47,27 @@ const openSearchBox = () => {
 
 const getNewsByTopic = async (event) => {
   let topic = event.target.textContent.toLowerCase();
-  let url = new URL(
+  url = new URL(
     `https://newsapi.org/v2/top-headlines?country=us&category=${topic}&apiKey=9f59e5d808ff4e5bb49c8ee92f191b8d`
   );
 
-  let header = new Headers({
-    //"x-api-key": "5ajRmfTRgAmgtKgdW9YLBXW7JhXbhtalP4nPdlGt7OM",
-    "x-api-key": "9f59e5d808ff4e5bb49c8ee92f191b8d",
-  });
+  getURL();
+};
 
-  let response = await fetch(url, { headers: header });
-  let data = await response.json();
-  news = data.articles;
-  render();
+const getNewsByKeyword = async () => {
+  //1.read the keyword
+  //2. put keyword into url
+  //3. header
+  //4. bring url
+  //5. get data
+  //6. show data
+  let keyword = document.getElementById("search-input").value.toLowerCase();
+  console.log("keyword is", keyword);
+  url = new URL(
+    `https://newsapi.org/v2/everything?q=${keyword}&apiKey=9f59e5d808ff4e5bb49c8ee92f191b8d`
+  );
+
+  getURL();
 };
 
 const render = () => {
@@ -98,4 +111,5 @@ const render = () => {
   document.getElementById("news-board").innerHTML = newsHTML;
 };
 
+searchButton.addEventListener("click", getNewsByKeyword);
 getLatestNews();
