@@ -6,22 +6,39 @@ navbarMenus.forEach((menu) =>
 
 let searchButton = document.getElementById("search-button");
 let url;
-const getURL = async () => {
-  let header = new Headers({
-    //"x-api-key": "5ajRmfTRgAmgtKgdW9YLBXW7JhXbhtalP4nPdlGt7OM",
-    "x-api-key": "9f59e5d808ff4e5bb49c8ee92f191b8d",
-  });
 
-  let response = await fetch(url, { headers: header });
-  let data = await response.json();
-  news = data.articles;
-  render();
+const getURL = async () => {
+  try {
+    let header = new Headers({
+      //"x-api-key": "5ajRmfTRgAmgtKgdW9YLBXW7JhXbhtalP4nPdlGt7OM",
+      "x-api-key": "9f59e5d808ff4e5bb49c8ee92f191b8d",
+    });
+
+    let response = await fetch(url, { headers: header });
+    let data = await response.json();
+
+    if (response.status == 200) {
+      if (data.totalResults == 0) {
+        throw new Error("No results found");
+      }
+      console.log(data);
+      news = data.articles;
+      console.log(news);
+      render();
+    } else {
+      throw new Error(data.message);
+    }
+  } catch (error) {
+    console.log("Error is", error.message);
+    errorRender(error.message);
+  }
 };
 
 const getLatestNews = async () => {
   url = new URL(
     //`https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=business`
-    `https://newsapi.org/v2/top-headlines?country=us&apiKey=9f59e5d808ff4e5bb49c8ee92f191b8d`
+    //`https://newsapi.org/v2/top-headlines?country=us&apiKey=9f59e5d808ff4e5bb49c8ee92f191b8d`
+    `https://newsapi.org/v2/top-headlines?country=us`
   );
   getURL();
 };
@@ -48,7 +65,7 @@ const openSearchBox = () => {
 const getNewsByTopic = async (event) => {
   let topic = event.target.textContent.toLowerCase();
   url = new URL(
-    `https://newsapi.org/v2/top-headlines?country=us&category=${topic}&apiKey=9f59e5d808ff4e5bb49c8ee92f191b8d`
+    `https://newsapi.org/v2/top-headlines?country=us&category=${topic}`
   );
 
   getURL();
@@ -63,9 +80,7 @@ const getNewsByKeyword = async () => {
   //6. show data
   let keyword = document.getElementById("search-input").value.toLowerCase();
   console.log("keyword is", keyword);
-  url = new URL(
-    `https://newsapi.org/v2/everything?q=${keyword}&apiKey=9f59e5d808ff4e5bb49c8ee92f191b8d`
-  );
+  url = new URL(`https://newsapi.org/v2/everything?q=${keyword}`);
 
   getURL();
 };
@@ -109,6 +124,13 @@ const render = () => {
     })
     .join("");
   document.getElementById("news-board").innerHTML = newsHTML;
+};
+
+const errorRender = (message) => {
+  let errorHTML = `<div class="alert alert-danger text-center" role="alert">
+  ${message}
+</div>`;
+  document.getElementById("news-board").innerHTML = errorHTML;
 };
 
 searchButton.addEventListener("click", getNewsByKeyword);
