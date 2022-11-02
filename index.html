@@ -33,20 +33,21 @@
         <button>Entertainment</button>
       </div>
     </div>
-    <i class="fa-solid fa-bars d-block d-sm-none" onclick="openNav()"></i>
+
     <section class="container">
-      <i
-        class="fa-solid fa-magnifying-glass"
-        id="search-glass"
-        onclick="openSearchBox()"
-      ></i>
-      <span id="input-area">
-        <input type="text" placeholder="search" id="search-input" />
-        <button id="search-button">Go</button></span
-      >
-      <!--website name, menu-->
-      <section>
-        <!--name-->
+      <div class="head-line-section">
+        <div>
+          <i class="fa-solid fa-bars d-block d-sm-none" onclick="openNav()"></i>
+          <i
+            class="fa-solid fa-magnifying-glass"
+            id="search-glass"
+            onclick="openSearchBox()"
+          ></i>
+          <span id="input-area">
+            <input type="text" placeholder="search" id="search-input" />
+            <button id="search-button">Go</button></span
+          >
+        </div>
         <div class="website-name">
           <svg viewBox="0 0 184 25" fill="#000">
             <path
@@ -54,9 +55,7 @@
             ></path>
           </svg>
         </div>
-
-        <!--menu bar-->
-        <div class="nav-bar d-none d-sm-block">
+        <div class="nav-bar d-none d-sm-block" id="menu-list">
           <button>General</button>
           <button>Business</button>
           <button>Technology</button>
@@ -65,9 +64,10 @@
           <button>Sports</button>
           <button>Entertainment</button>
         </div>
-      </section>
+      </div>
+
       <!--articles section-->
-      <section id="news-board">
+      <div id="news-board">
         <div class="row news">
           <!--texts-->
           <div class="col-lg-8">
@@ -84,7 +84,7 @@
             />
           </div>
         </div>
-      </section>
+      </div>
     </section>
 
     <script
@@ -92,8 +92,7 @@
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
       crossorigin="anonymous"
     ></script>
-    <script src="main.js"></script>
-    <!-- 햄버거 버튼 추가  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.0/moment.min.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>

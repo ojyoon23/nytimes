@@ -1,5 +1,6 @@
 let news = [];
-let navbarMenus = document.querySelectorAll(".nav-bar button");
+
+let navbarMenus = document.querySelectorAll("#menu-list button");
 navbarMenus.forEach((menu) =>
   menu.addEventListener("click", (event) => getNewsByTopic(event))
 );
@@ -21,8 +22,9 @@ const getURL = async () => {
       if (data.totalResults == 0) {
         throw new Error("No results found");
       }
-      console.log(data);
+      console.log("What data im getting", data);
       news = data.articles;
+
       console.log(news);
       render();
     } else {
@@ -65,7 +67,7 @@ const openSearchBox = () => {
 const getNewsByTopic = async (event) => {
   let topic = event.target.textContent.toLowerCase();
   url = new URL(
-    `https://newsapi.org/v2/top-headlines?country=us&category=${topic}`
+    `https://newsapi.org/v2/top-headlines?country=us&category=${topic}&pageSize=100`
   );
 
   getURL();
