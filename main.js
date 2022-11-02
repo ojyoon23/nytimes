@@ -1,3 +1,4 @@
+const API_KEY = "9f59e5d808ff4e5bb49c8ee92f191b8d";
 let news = [];
 
 let navbarMenus = document.querySelectorAll("#menu-list button");
@@ -10,10 +11,8 @@ let url;
 
 const getURL = async () => {
   try {
-    let header = new Headers({
-      //"x-api-key": "5ajRmfTRgAmgtKgdW9YLBXW7JhXbhtalP4nPdlGt7OM",
-      "x-api-key": "9f59e5d808ff4e5bb49c8ee92f191b8d",
-    });
+    let header = new Headers();
+    header.append("x-api-key", API_KEY);
 
     let response = await fetch(url, { headers: header });
     let data = await response.json();
