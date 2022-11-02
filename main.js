@@ -87,6 +87,15 @@ const getNewsByKeyword = async () => {
   getURL();
 };
 
+const searchNews = () => {
+  let keyword = document.getElementById("search-input").value;
+  page = 1;
+  url = new URL(
+    `https://api.newscatcherapi.com/v2/search?q=${keyword}&page_size=10`
+  );
+  getNews();
+};
+
 const render = () => {
   let newsHTML = "";
   newsHTML = news
