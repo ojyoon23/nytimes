@@ -28,6 +28,21 @@
   background-color: #e3d5ca;
 }
 
+#search-button {
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  background-color: #4299e1;
+  border-radius: 4px;
+  padding: 8px 13px;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  line-height: 20px;
+  margin-left: 5px;
+}
+
 .news-img-size {
   /*max-width: 100%;
   max-height: 250px;*/
