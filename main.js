@@ -1,4 +1,4 @@
-const proxyUrl = "https://https://nytimes-ojyoon23.netlify.app/";
+const proxyUrl = "https://nytimes-ojyoon23.netlify.app/";
 const API_KEY = "9f59e5d808ff4e5bb49c8ee92f191b8d";
 
 let news = [];
