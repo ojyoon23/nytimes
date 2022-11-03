@@ -9,7 +9,7 @@ navbarMenus.forEach((menu) =>
 );
 
 let searchButton = document.getElementById("search-button");
-let url;
+let url = new URL(`${proxyUrl}https://newsapi.org/v2/top-headlines?country=us`);
 
 const getURL = async () => {
   try {
