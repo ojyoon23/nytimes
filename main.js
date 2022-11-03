@@ -1,4 +1,6 @@
+const proxyUrl = "https://https://nytimes-ojyoon23.netlify.app/";
 const API_KEY = "9f59e5d808ff4e5bb49c8ee92f191b8d";
+
 let news = [];
 
 let navbarMenus = document.querySelectorAll("#menu-list button");
@@ -39,7 +41,7 @@ const getLatestNews = async () => {
   url = new URL(
     //`https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=business`
     //`https://newsapi.org/v2/top-headlines?country=us&apiKey=9f59e5d808ff4e5bb49c8ee92f191b8d`
-    `https://newsapi.org/v2/top-headlines?country=us`
+    `${proxyUrl}https://newsapi.org/v2/top-headlines?country=us`
   );
   getURL();
 };
@@ -66,7 +68,7 @@ const openSearchBox = () => {
 const getNewsByTopic = async (event) => {
   let topic = event.target.textContent.toLowerCase();
   url = new URL(
-    `https://newsapi.org/v2/top-headlines?country=us&category=${topic}&pageSize=100`
+    `${proxyUrl}https://newsapi.org/v2/top-headlines?country=us&category=${topic}&pageSize=100`
   );
 
   getURL();
@@ -81,7 +83,7 @@ const getNewsByKeyword = async () => {
   //6. show data
   let keyword = document.getElementById("search-input").value.toLowerCase();
   console.log("keyword is", keyword);
-  url = new URL(`https://newsapi.org/v2/everything?q=${keyword}`);
+  url = new URL(`${proxyUrl}https://newsapi.org/v2/everything?q=${keyword}`);
 
   getURL();
 };
@@ -90,7 +92,7 @@ const searchNews = () => {
   let keyword = document.getElementById("search-input").value;
   page = 1;
   url = new URL(
-    `https://api.newscatcherapi.com/v2/search?q=${keyword}&page_size=10`
+    `${proxyUrl}https://api.newscatcherapi.com/v2/search?q=${keyword}&page_size=10`
   );
   getNews();
 };
