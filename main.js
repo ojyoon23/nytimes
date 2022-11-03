@@ -15,7 +15,7 @@ const getURL = async () => {
   try {
     let header = new Headers();
     header.append("x-api-key", API_KEY);
-
+    header.append("Access-Control-Allow-Origin", "*");
     let response = await fetch(url, { headers: header });
     let data = await response.json();
 
