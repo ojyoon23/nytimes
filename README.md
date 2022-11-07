@@ -31,7 +31,7 @@ Other features:
 
 ## Challenges
 
-This newsapi does not allow deploying non-locally. And there are limited categories.
+Will find another api as this newsapi does not allow deploying non-locally unless it's paid. And there are limited categories.
 
 
 ## Future goals
