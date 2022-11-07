@@ -29,8 +29,12 @@ Other features:
 * Article uploaded date if the article was published more than 24 hours ago. Otherwise, how many hours ago it was published from now.
 
 
+## Challenges
+
+This newsapi does not allow deploying non-locally. And there are limited categories.
+
+
 ## Future goals
 
 * Add page nation feature to nevigate easily by page
 * Make a distinct main page 
-* Find a better news api with more categories and that is more stable
